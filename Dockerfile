@@ -7,4 +7,6 @@ COPY Pipfile Pipfile.lock .
 RUN pipenv sync --system
 
 COPY . .
-CMD ./startup.sh
+
+RUN python3 manage.py tailwind install --no-input
+CMD ["python3", "manage.py", "runserver", "0:8000"]
